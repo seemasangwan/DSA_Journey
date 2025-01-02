@@ -1,0 +1,45 @@
+code forces
+link: https://codeforces.com/problemset/problem/1744/C
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {  
+         int n;
+         cin>>n;
+         char ch;
+         cin>>ch;
+        string s;
+        cin>>s;
+        s=s+s;
+        if(ch=='g')
+        {
+            cout<<"0\n";
+            continue;
+        }
+ 
+         int i=0;
+         while(i<s.length()&&s[i]!=ch)
+         i++;
+        int j=i+1;
+        int ans=0;
+        while(j<s.length())
+        {
+          if(s[j]=='g'&&s[i]==ch)
+          {
+            ans=max(ans,abs(j-i));
+            i=j;
+          }
+          else if(s[j]==ch&&s[i]!=ch)
+          {
+            i=j;
+          }
+          j++;
+        }
+           cout<<ans<<endl;
+        
+    }
+}
