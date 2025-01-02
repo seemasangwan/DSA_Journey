@@ -1,0 +1,25 @@
+#define pi pair<int,int>
+class Solution {
+public:
+    int longestSubarray(vector<int>& nums, int limit) {
+        priority_queue<pi>maxi;
+        priority_queue<pi,vector<pi>,greater<pi>>mini;
+        int ans=0;
+        int i=0,j=0;
+        while(j<nums.size())
+        {
+            mini.push({nums[j],j});
+            maxi.push({nums[j],j});
+            while(maxi.top().first-mini.top().first>limit&&i<j)
+           { i++; 
+            while(!mini.empty()&&mini.top().second<i)
+            mini.pop();
+            while(!maxi.empty()&&maxi.top().second<i)
+            maxi.pop();
+            }
+              ans=max(ans,j-i+1);
+              j++;
+        }
+        return ans;
+    }
+};
