@@ -1,0 +1,23 @@
+link : https://leetcode.com/problems/maximum-score-after-splitting-a-string/?envType=daily-question&envId=2025-01-01
+class Solution {
+public:
+    int maxScore(string s) {
+        int cnt=0;
+        for(int i=0;i<s.length()-1;i++)
+        {
+              if(s[i]=='0')
+              cnt++;
+        }
+        int ans=cnt;
+        for(int i=s.length()-1;i>=1;i--)
+        {
+            if(s[i]=='1')
+            cnt++;
+            else if(i==s.length()-1)
+            continue;
+            else cnt--;
+            ans=max(ans,cnt);
+        }
+        return ans;
+    }
+};
