@@ -1,0 +1,18 @@
+class Solution {
+public:
+      int solve(int l,int r,int k,vector<int>&nums)
+      {
+        if(l>=r) return 0;
+        if(k==0) return abs( nums[r]-nums[l]);
+        // remove l
+        // remove r
+       int lres= solve(l+1,r,k-1,nums);
+       int rres=solve(l,r-1,k-1,nums);
+       return min(lres,rres);
+      }
+    int minDifference(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        int r=nums.size()-1;
+        return solve(0,r,3,nums);
+    }
+};
